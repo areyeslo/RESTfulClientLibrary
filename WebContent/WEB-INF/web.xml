@@ -7,14 +7,14 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>getBooksByYear.jsp</welcome-file>
+    <welcome-file>getBooks.jsp</welcome-file>
   </welcome-file-list>
-   <servlet>
-  		<servlet-name>GetBooksByYear</servlet-name>
-  		<servlet-class>RESTful.client.getBooks</servlet-class>
+  <servlet>
+    <servlet-name>MonitorBooks</servlet-name>
+    <servlet-class>MonitorManagedResource</servlet-class>
   </servlet>
   <servlet-mapping>
-  		<servlet-name>GetBooksByYear</servlet-name>
-  		<url-pattern>/getBooks</url-pattern>
+    <servlet-name>MonitorBooks</servlet-name>
+    <url-pattern>/getBooks</url-pattern>
   </servlet-mapping>
 </web-app>
