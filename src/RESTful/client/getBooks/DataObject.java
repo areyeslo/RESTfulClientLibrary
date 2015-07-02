@@ -1,6 +1,7 @@
 package RESTful.client.getBooks;
 
 public class DataObject {
+	private String id = "";
 	private String name = "";
 	private String author = "";
 	private String year = "";
@@ -14,6 +15,26 @@ public class DataObject {
 		this.author = a;
 		this.year = y;
 		this.publisher = p;
+	}
+	
+	public String getID() {
+		return this.id;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getAuthor() {
+		return this.author;
+	}
+	
+	public String getYear() {
+		return this.year;
+	}
+	
+	public String getPublisher() {
+		return this.publisher;
 	}
 	
 	@Override

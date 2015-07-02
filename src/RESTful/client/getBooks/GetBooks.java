@@ -107,6 +107,22 @@ public class GetBooks extends HttpServlet {
         String output = rs.getEntity(String.class);
         System.out.println("Output from Server .... ");
         System.out.println(output + "\n");
+        
+        PrintWriter printWriter = response.getWriter();
+        printWriter.println("<h1>The book is added currently</h1>");
+        
+        if (rs.getStatus() != 200){
+        	printWriter.println("<html><body>Sorry, Failed : HTTP error code :"+rs.getStatus()+"<br>");
+        }else{
+        	obj = gson.fromJson(output, DataObject.class);
+        	
+        	printWriter.println("<html><body><br>");
+            printWriter.println("ID: "+obj.getID()+"<br>"+"Name: "+obj.getName()+"<br>"+
+            		"Author: "+obj.getAuthor()+"<br>"+"Publisher: "+obj.getPublisher()+"<br>"+ 
+            		"Year: "+obj.getYear()+"<br><br>");
+        }
+        printWriter.println("</body></html>");
+        printWriter.print("<a href=\"getBooks.jsp\">Back</a>");
 	}
 
 }
