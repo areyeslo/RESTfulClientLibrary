@@ -79,7 +79,34 @@ public class GetBooks extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// extract form data
+		String bookName = request.getParameter("name");
+		String authorName = request.getParameter("author");
+		String yearBook = request.getParameter("year");
+		String publisherBook = request.getParameter("publisher");
+		
+		DataObject obj = new DataObject(bookName, authorName, yearBook, publisherBook);
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(obj);
+		System.out.println(jsonString);
+		
+		Client client = Client.create();
+		
+		WebResource webResource = client.resource("http://localhost:8080/library/webapi/books");
+		
+		// POST method
+        ClientResponse rs = webResource.accept("application/json")
+                .type("application/json").post(ClientResponse.class, jsonString);
+
+		// check response status code
+		if (rs.getStatus() != 200) {
+			throw new RuntimeException("Failed : HTTP error code : "
+					+ rs.getStatus());
+		}
+		// display response
+        String output = rs.getEntity(String.class);
+        System.out.println("Output from Server .... ");
+        System.out.println(output + "\n");
 	}
 
 }

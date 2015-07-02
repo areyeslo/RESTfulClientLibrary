@@ -11,5 +11,20 @@
 	<form action="GetBooks" method="get">
  		  Please press the button to search the list of books <input type="submit" value="get"/> 
 	</form>
+	<br />
+	<br />
+	<br />
+	<form action="GetBooks" method="Post">
+		Name:   <input type="text" name="name"/>
+		<br /><br />
+		Author: <input type="text" name="author"/>
+		<br /><br />
+		Year: <input type="text" name="year"/>
+		<br /><br />
+		Publisher: <input type="text" name="publisher"/>
+		<br /><br />
+ 		<input type="submit" value="Post"/>  
+
+	</form>
 </body>
 </html>
